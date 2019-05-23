@@ -1,8 +1,8 @@
-import { testHook, cleanup } from 'react-testing-library';
-import 'jest-dom/extend-expect';
+import { cleanup,  } from 'react-testing-library';
+import { renderHook, act } from 'react-hooks-testing-library'
+import 'jest-dom/extend-expect'
 
-import useEventListener from '../src';
-
+import useEventListener from '../lib'
 
 const mouseMoveEvent = { clientX: 100, clientY: 200 };
 let hackHandler = null;
@@ -30,23 +30,39 @@ describe('useEventListener', () => {
     const handler = jest.fn();
     const addEventListenerSpy = jest.spyOn(mockElement, 'addEventListener');
 
-    testHook(() => {
+    renderHook(() => {
       useEventListener('foo', handler, mockElement);
     });
 
     expect(addEventListenerSpy).toBeCalled();
 
-    mockElement.dispatchEvent(mouseMoveEvent);
+    act(() => {
+      mockElement.dispatchEvent(mouseMoveEvent);
+    })
+
     expect(handler).toBeCalledWith(mouseMoveEvent);
 
     addEventListenerSpy.mockRestore();
   });
 
+  test('cleanup', () => {
+    const handler = jest.fn();
+    const removeEventListener = jest.spyOn(mockElement, 'removeEventListener');
+
+    renderHook(() => {
+      useEventListener('foo', handler, mockElement);
+    }).unmount()
+
+    expect(removeEventListener).toBeCalled();
+
+    removeEventListener.mockRestore();
+  });
+
   test('`element` is optional (defaults to `window`/`global`)', () => {
     const handler = jest.fn();
-    const addEventListenerSpy = jest.spyOn(global, 'addEventListener');
+    const addEventListenerSpy = jest.spyOn(globalThis, 'addEventListener');
 
-    testHook(() => {
+    renderHook(() => {
       useEventListener('foo', handler);
     });
 
@@ -58,8 +74,33 @@ describe('useEventListener', () => {
   test('fails safe with SSR (i.e. no window)', () => {
     const handler = jest.fn();
 
-    testHook(() => {
+    renderHook(() => {
       useEventListener('foo', handler, {});
     });
+  });
+
+  test('invalid params', () => {
+    const handler = jest.fn();
+
+    renderHook(() => {
+      useEventListener('', handler, {});
+    }).unmount()
+
+    const addEventListenerSpy = jest.spyOn(mockElement, 'addEventListener');
+    const removeEventListener = jest.spyOn(mockElement, 'removeEventListener');
+
+    const hook = renderHook(() => {
+      useEventListener('ghj', null, mockElement);
+    })
+
+    act(() => {
+      mockElement.dispatchEvent(mouseMoveEvent);
+    })
+
+    hook.unmount()
+
+    addEventListenerSpy.mockRestore();
+    removeEventListener.mockRestore();
+
   });
 });
