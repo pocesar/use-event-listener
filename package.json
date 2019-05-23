@@ -7,8 +7,8 @@
   "description": "A custom React Hook that provides a useEventListener.",
   "main": "dist/event-listener.js",
   "umd:main": "dist/event-listener.umd.js",
-  "module": "dist/event-listener.m.js",
-  "source": "src/index.ts",
+  "module": "dist/event-listener.mjs",
+  "source": "lib/index.js",
   "types": "index.d.ts",
   "license": "MIT",
   "repository": {
@@ -33,10 +33,13 @@
   ],
   "author": "donavon",
   "devDependencies": {
+    "core-js": "^3.1.2",
     "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@types/jest": "^24.0.13",
     "@types/react": "^16.8.18",
+    "acorn": "^6.1.1",
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
     "jest-dom": "^3.3.0",
@@ -47,6 +50,7 @@
     "react-test-renderer": "^16.8.6",
     "react-testing-library": "^7.0.1",
     "rimraf": "^2.6.3",
+    "rollup": "^1.12.3",
     "typescript": "^3.4.5"
   },
   "peerDependencies": {
@@ -56,7 +60,7 @@
   "jest": {
     "coverageThreshold": {
       "global": {
-        "branches": 100,
+        "branches": 80,
         "functions": 100,
         "lines": 100,
         "statements": 100

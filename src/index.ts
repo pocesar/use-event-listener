@@ -10,7 +10,7 @@ function useEventListener<
 >(
   eventName: EventName,
   handler: Handler<EventName, EventHandler>,
-  element: HTMLElement | Window | Document | typeof globalThis = globalThis,
+  element: HTMLElement | Window | Document | typeof globalThis = globalThis || <any>global || window,
   options?: EventListenerOptions
 ): void {
   const savedHandler = useRef<Handler<EventName, EventHandler>>()
