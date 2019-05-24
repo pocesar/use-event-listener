@@ -1,8 +1,8 @@
-# @use-it/event-listener
+# react-use-event-listener
 
 A custom React Hook that provides a declarative useEventListener.
 
-[![npm version](https://badge.fury.io/js/%40use-it%2Fevent-listener.svg)](https://badge.fury.io/js/%40use-it%2Fevent-listener) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![npm version](https://badge.fury.io/js/react-use-event-listener.svg)](https://badge.fury.io/js/react-use-event-listener) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors) [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 This hook was inspired by [Dan Abramov](https://github.com/gaearon)'s
 blog post
@@ -16,21 +16,43 @@ between Dan and myself.
 ## Installation
 
 ```bash
-$ npm i @use-it/event-listener
+$ npm i react-use-event-listener
 ```
 
 or
 
 ```bash
-$ yarn add @use-it/event-listener
+$ yarn add react-use-event-listener
 ```
 
 ## Usage
 
 Here is a basic setup.
 
-```js
-useEventListener(eventName, handler, element);
+```tsx
+import useEventListener from 'react-use-event-listener'
+
+const MyElement: React.FunctionComponent = () => {
+  useEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault()
+  }) // uses window
+
+  return (
+    <div></div>
+  )
+}
+
+const CustomEvent: React.FunctionComponent = () => {
+  const elementRef = useRef()
+
+  useEventListener('customevent', (e) => {
+    // do stuff
+  }, ref, { capture: true }) // accepts a ref
+
+  return (
+    <ExoticForwardedRef ref={elementRef} />
+  )
+}
 ```
 
 ### Parameters
@@ -41,7 +63,8 @@ Here are the parameters that you can use. (\* = optional)
 | :---------- | :--------------------------------------------------------------------------------------------------------------- |
 | `eventName` | The event name (string). Here is a list of [common events](https://developer.mozilla.org/en-US/docs/Web/Events). |
 | `handler`   | A function that will be called whenever `eventName` fires on `element`.                                          |
-| `element`\* | An optional element to listen on. Defaults to `global` (i.e., `window`).                                         |
+| `element`\* | An optional element to listen on. Defaults to `globalThis` (i.e., `window`).                                         |
+| `options`\* | Optional options as in [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).                                         |
 
 ### Return
 

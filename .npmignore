@@ -8,3 +8,5 @@ coverage
 .prettierrc
 .travis.yml
 .all-contributorsrc
+lib
+babel.config.js
