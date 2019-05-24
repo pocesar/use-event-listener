@@ -64,3 +64,4 @@ typings/
 # lib
 lib/
 dist/
+index.d.ts
