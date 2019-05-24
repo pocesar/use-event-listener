@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "A custom React Hook that provides a useEventListener.",
   "main": "dist/event-listener.js",
   "umd:main": "dist/event-listener.umd.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pocesar/use-event-listener.git"
+    "url": "https://github.com/pocesar/react-use-event-listener.git"
   },
   "scripts": {
     "prepublishOnly": "npm run build",
