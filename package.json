@@ -3,11 +3,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A custom React Hook that provides a useEventListener.",
-  "main": "dist/event-listener.js",
-  "umd:main": "dist/event-listener.umd.js",
-  "module": "dist/event-listener.mjs",
+  "main": "dist/react-use-event-listener.js",
+  "module": "dist/react-use-event-listener.mjs",
+  "unpkg": "dist/react-use-event-listener.umd.js",
   "source": "lib/index.js",
   "types": "index.d.ts",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "compile": "tsc -p .",
     "test": "npm run compile && jest --verbose --coverage --silent",
     "test:watch": "jest --watch --runInBand --silent",
-    "prebuild": "npm t && rimraf dist",
+    "prebuild": "npm t && rimraf -rf dist",
     "build": "microbundle -o dist/ --sourcemap false --target web"
   },
   "keywords": [
