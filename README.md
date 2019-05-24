@@ -114,7 +114,7 @@ const useMouseMove = () => {
 
 You can view/edit the sample code above on CodeSandbox.
 
-[![Edit demo app on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/k38lyx2q9o)
+[![Edit demo app on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bimiu)
 
 ## License
 
