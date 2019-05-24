@@ -2,7 +2,7 @@
 
 A custom React Hook that provides a declarative useEventListener.
 
-[![npm version](https://badge.fury.io/js/react-use-event-listener.svg)](https://badge.fury.io/js/react-use-event-listener) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors) [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
+[![npm version](https://badge.fury.io/js/react-use-event-listener.svg)](https://badge.fury.io/js/react-use-event-listener) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors) [![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/) [![Build Status](https://travis-ci.org/pocesar/react-use-event-listener.svg?branch=master)](https://travis-ci.org/pocesar/react-use-event-listener)
 
 This hook was inspired by [Dan Abramov](https://github.com/gaearon)'s
 blog post
