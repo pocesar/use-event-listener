@@ -16,23 +16,14 @@ function useEventListener<
   eventName: EventName,
   handler: Handler<EventName, EventHandler>,
   /** Fallsback to globalThis or window if none provided. throws if nothing is available */
-  element?: EventTarget | HTMLElement | Window | Document | typeof globalThis | RefObject<any> | MutableRefObject<any>,
+  element: EventTarget | HTMLElement | Window | Document | typeof globalThis | RefObject<any> | MutableRefObject<any> = globalThis || window,
   options?: AddEventListenerOptions
 ): void {
-  let isRef = false
-
-  if (typeof element === 'undefined' || !element) {
-    /* istanbul ignore else */
-    if (typeof globalThis !== 'undefined') {
-      element = globalThis
-    } else if (typeof window !== 'undefined') {
-      element = window
-    } else {
-      throw new Error('no valid element for useEventListener')
-    }
-  } else if ('current' in element) {
-    isRef = true
+  if (!element) {
+    throw new Error('No valid element for useEventListener');
   }
+
+  const isRef = "current" in element
 
   const savedHandler = useRef<Handler<EventName, EventHandler>>()
   savedHandler.current = handler
