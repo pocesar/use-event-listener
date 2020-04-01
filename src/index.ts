@@ -17,7 +17,7 @@ function useEventListener<
   handler: Handler<EventName, EventHandler>,
   /** Fallsback to globalThis or window if none provided. throws if nothing is available */
   element?: EventTarget | HTMLElement | Window | Document | typeof globalThis | RefObject<any> | MutableRefObject<any>,
-  options?: EventListenerOptions
+  options?: AddEventListenerOptions
 ): void {
   let isRef = false
 
