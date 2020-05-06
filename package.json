@@ -6,7 +6,7 @@
   "version": "1.0.1",
   "description": "A custom React Hook that provides a useEventListener.",
   "main": "dist/react-use-event-listener.js",
-  "module": "dist/react-use-event-listener.mjs",
+  "module": "dist/react-use-event-listener.esm.js",
   "unpkg": "dist/react-use-event-listener.umd.js",
   "source": "lib/index.js",
   "types": "index.d.ts",
