@@ -1,8 +1,8 @@
 // @ts-nocheck
-import { cleanup, render  } from 'react-testing-library';
-import { renderHook, act } from 'react-hooks-testing-library'
+import { cleanup, render  } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react-hooks'
 import React, { useRef, useEffect } from 'react'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 import useEventListener from '../lib'
 
